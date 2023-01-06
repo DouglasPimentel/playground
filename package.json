@@ -13,6 +13,7 @@
     "start": "turbo run start",
     "dev": "turbo run dev --parallel",
     "update-schema": "turbo run update-schema",
+    "relay": "turbo run relay",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

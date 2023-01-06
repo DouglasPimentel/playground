@@ -15,10 +15,13 @@
     "start": {
       "outputs": []
     },
-    "format": {
+    "update-schema": {
       "outputs": []
     },
-    "update-schema": {
+    "relay": {
+      "outputs": []
+    },
+    "format": {
       "outputs": []
     }
   }
