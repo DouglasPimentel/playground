@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "yarn run relay && vite",
-    "build": "yarn run relay && tsc && vite build",
-    "preview": "yarn run relay && vite preview",
+    "dev": "yarn relay && vite",
+    "build": "yarn relay && tsc && vite build",
+    "preview": "yarn relay && vite preview",
     "relay": "relay-compiler",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
