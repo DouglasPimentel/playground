@@ -17,6 +17,9 @@
     },
     "format": {
       "outputs": []
+    },
+    "update-schema": {
+      "outputs": ["../schemas/graphql/**"]
     }
   }
 }
