@@ -9,7 +9,14 @@
       "outputs": []
     },
     "dev": {
-      "cache": false
+      "cache": false,
+      "env": ["NODE_ENV", "API_PORT", "JWT_SECRET", "MONGO_URI"]
+    },
+    "start": {
+      "outputs": []
+    },
+    "format": {
+      "outputs": []
     }
   }
 }
