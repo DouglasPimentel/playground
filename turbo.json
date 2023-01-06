@@ -19,7 +19,7 @@
       "outputs": []
     },
     "update-schema": {
-      "outputs": ["../schemas/graphql/**"]
+      "outputs": []
     }
   }
 }
