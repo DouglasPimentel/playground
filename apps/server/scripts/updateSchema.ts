@@ -4,6 +4,7 @@ import { promisify } from "util";
 import { graphql, GraphQLSchema } from "graphql";
 import { printSchema, getIntrospectionQuery } from "graphql/utilities";
 import schema from "../src/graphql/schema";
+import logger from "../src/middlewares/logger";
 
 const writeFileAsync = promisify(fs.writeFile);
 const introspectionQuery = getIntrospectionQuery();
@@ -18,7 +19,7 @@ const generateSchema = async (
   });
 
   if (result.errors) {
-    console.error(JSON.stringify(result.errors, null, 2));
+    logger.error(JSON.stringify(result.errors, null, 2));
   } else {
     await writeFileAsync(
       path.join(__dirname, `${relativePath}/schema.json`),
