@@ -8,7 +8,7 @@ import { globalIdField, connectionDefinitions } from "graphql-relay";
 import { User } from "./User";
 import { NodeInterface } from "../../graphql/NodeInterface";
 
-export const UserType: GraphQLObjectType = new GraphQLObjectType<User>({
+const UserType: GraphQLObjectType = new GraphQLObjectType<User>({
   name: "User",
   description: "User data",
   fields: () => ({
@@ -55,3 +55,5 @@ export const UserConnection = connectionDefinitions({
   name: "User",
   nodeType: new GraphQLNonNull(UserType),
 });
+
+export default UserType;

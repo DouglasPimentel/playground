@@ -1,6 +1,15 @@
 import UserModel from "../UserModel";
 import { UserInterface } from "../UserInterface";
 import encryptPassword from "../utils/encryptPassword";
+import logger from "../../../middlewares/logger";
+
+export type UserDataRequest = {
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+  active: boolean;
+};
 
 export async function findAll(): Promise<UserInterface[]> {
   return await UserModel.find({}).sort({ created_at: -1 });
@@ -33,4 +42,21 @@ export async function create(
     active: true,
   }).save();
   return newUser;
+}
+
+export async function update(
+  id: string,
+  data: Partial<UserDataRequest>,
+): Promise<UserInterface | null> {
+  try {
+    const user = await UserModel.findOneAndUpdate({ _id: id }, data);
+
+    return user;
+  } catch (error) {
+    if (error instanceof Error) {
+      logger.error(error.message);
+    }
+
+    throw new Error("Could not update user data");
+  }
 }

@@ -1,7 +1,7 @@
 import { nodeDefinitions, fromGlobalId } from "graphql-relay";
 import { findById } from "../modules/user/services";
 import { User } from "../modules/user/User";
-import { UserType } from "../modules/user/UserType";
+import UserType from "../modules/user/UserType";
 
 const { nodeField, nodesField, nodeInterface } = nodeDefinitions(
   async (globalId: string) => {
