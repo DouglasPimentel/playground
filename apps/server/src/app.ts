@@ -10,7 +10,34 @@ import {
   sendResult,
   shouldRenderGraphiQL,
 } from "graphql-helix";
+import { ExecutionResult, GraphQLError, GraphQLErrorOptions } from "graphql";
 import schema from "./graphql/schema";
+import logger from "./middlewares/logger";
+
+const formatResult = (result: ExecutionResult) => {
+  const formattedResult: ExecutionResult = {
+    data: result.data,
+  };
+
+  if (result.errors) {
+    formattedResult.errors = result.errors.map(error => {
+      logger.error(error);
+
+      const options: GraphQLErrorOptions = {
+        extensions: error.extensions,
+        nodes: error.nodes,
+        originalError: error.originalError,
+        path: error.path,
+        positions: error.positions,
+        source: error.source,
+      };
+
+      return new GraphQLError("Sorry, something went wrong", options);
+    });
+  }
+
+  return formattedResult;
+};
 
 const app = new Koa();
 const router = new Router();
@@ -41,7 +68,7 @@ app.use(async ctx => {
     });
 
     ctx.respond = false;
-    sendResult(result, ctx.res);
+    sendResult(result, ctx.res, formatResult);
   }
 });
 
