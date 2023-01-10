@@ -83,6 +83,9 @@ type User implements Node {
 """All mutations"""
 type Mutation {
   UserCreate(input: UserCreateInput!): UserCreatePayload
+
+  """User update mutation"""
+  UserUpdateMutation(input: UserUpdateMutationInput!): UserUpdateMutationPayload
 }
 
 type UserCreatePayload {
@@ -96,5 +99,22 @@ input UserCreateInput {
   name: String!
   email: String!
   password: String!
+  clientMutationId: String
+}
+
+type UserUpdateMutationPayload {
+  message: String
+  user: User
+  error: String
+  clientMutationId: String
+}
+
+input UserUpdateMutationInput {
+  id: String
+  name: String
+  email: String
+  password: String
+  role: String
+  active: Boolean
   clientMutationId: String
 }
