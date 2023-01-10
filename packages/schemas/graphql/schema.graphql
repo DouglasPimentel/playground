@@ -60,7 +60,7 @@ type PageInfo {
 """An edge in a connection."""
 type UserEdge {
   """The item at the end of the edge"""
-  node: User
+  node: User!
 
   """A cursor for use in pagination"""
   cursor: String!

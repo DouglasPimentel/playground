@@ -1,4 +1,11 @@
-import { Environment, Network, RecordSource, Store, RequestParameters, Variables } from "relay-runtime";
+import {
+  Environment,
+  Network,
+  RecordSource,
+  Store,
+  RequestParameters,
+  Variables,
+} from "relay-runtime";
 import fetchGraphQL from "./fetchGraphQL";
 
 async function fetchRelay(params: RequestParameters, variables: Variables) {

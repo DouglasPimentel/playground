@@ -48,10 +48,10 @@ export const UserType: GraphQLObjectType = new GraphQLObjectType<User>({
         updated_at ? updated_at.toISOString() : null,
     },
   }),
-  interfaces: () => [NodeInterface],
+  interfaces: () => [NodeInterface], 
 });
 
 export const UserConnection = connectionDefinitions({
   name: "User",
-  nodeType: UserType,
+  nodeType: new GraphQLNonNull(UserType),
 });
